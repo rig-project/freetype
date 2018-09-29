@@ -71,8 +71,10 @@ src = [
     'src/psnames/psmodule.c',
 ]
 
-lib = shared_library('freetype', src,
-                     version: '2.4.4',
-                     include_directories: inc,
-                     c_args: c_defines + warn_opts,
-                     dependencies: deps)
+freetype_lib = library('freetype', src,
+                       version: '2.4.4',
+                       include_directories: inc,
+                       c_args: c_defines + warn_opts,
+                       dependencies: deps)
+freetype_dep = declare_dependency(link_with: freetype_lib,
+                                  include_directories: public_includes)
